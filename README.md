@@ -1,4 +1,6 @@
 weekend_project
 ===============
 
-weekend project for April 5-6
+Name: Vincent Trivett
+
+Github: [trivett](https://github.com/trivett)
