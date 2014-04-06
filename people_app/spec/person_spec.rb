@@ -20,21 +20,28 @@ describe Person do
     expect(bob.have_a_drink).to eq("Wait a few years")
   end
 
+  it "can drive a car if of age and sober" do
+    adam = Person.new(:firstname => "Adam", :lastname => "Bray", :birthdate => Date.new(1981,2,3), :drinks => 1, :license => true)
+    mike = Person.new(:firstname => "Mike", :lastname => "Bray", :birthdate => Date.new(1981,2,3), :license => true, :drinks => 3)
+    bob = Person.new(:firstname => "Bob", :lastname => "Bray", :birthdate => Date.new(2000,2,3))
+    susan = Person.new(:firstname => "Susan", :lastname => "Bray", :birthdate => Date.new(1995,2,3), :license => true, :drinks => 0)
+    michelle = Person.new(:firstname => "Michelle", :lastname => "Bray", :birthdate => Date.new(1995,2,3), :license => false)
+    expect(bob.drive_a_car).to eq("Not yet youngin")
+    expect(susan.drive_a_car).to eq("Stay safe!")
+    expect(michelle.drive_a_car).to eq("Get a license first")
+    expect(mike.drive_a_car).to eq("Looks like a cab for you tonight")
+    expect(adam.drive_a_car).to eq("Stay safe!")
+  end
 
-
-
+  it "can sober up" do
+    mike = Person.new(:firstname => "Mike", :lastname => "Bray", :birthdate => Date.new(1981,2,3), :license => true, :drinks => 3)
+   susan = Person.new(:firstname => "Susan", :lastname => "Bray", :birthdate => Date.new(1995,2,3), :license => true, :drinks => 0)
+    mike.sober_up
+    susan.sober_up
+    expect(mike.drinks).to eq(2)
+    expect(susan.drinks).to eq(0)
+  end
 end
 
-
-# #have_a_drink
-# if they are over 21 then they can drink and the number stored in the drinks attribute is increased by 1
-# if they are under 21 then the string "Wait a few years" is returned
-# if they can drink, they are not allowed to have more than three drinks otherwise the string "Go home you're drunk"
-# #drive_a_car
-# if they are under 18 then a string "Not yet youngin" is returned
-# if they are 18 and they have a license then they can drive
-# if they are over 18 and have a license then they can drive
-# if they are over 21, have a license, and are drunk then the string "Looks like a cab for you tonight" is returned
-# #sober_up
 # if they have any drinks, it decreases it by 1
 # if they have no drinks, nothing happens
