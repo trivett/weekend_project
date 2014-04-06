@@ -4,4 +4,7 @@ class Person <ActiveRecord::Base
     return "#{self.firstname} #{self.lastname}"
   end
 
+  def birthday
+    return self.birthdate.strftime("%B%e, %Y")
+  end
 end

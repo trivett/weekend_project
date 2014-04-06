@@ -1,13 +1,15 @@
 require "spec_helper"
 
 describe Person do
-  context "with 2 or more comments" do
-    it "has a full name" do
-      adam = Person.new(:firstname => "Adam", :lastname => "Bray")
-      expect(adam.name).to eq("Adam Bray")
+  it "has a full name" do
+    adam = Person.new(:firstname => "Adam", :lastname => "Bray")
+    expect(adam.name).to eq("Adam Bray")
+  end
 
+  it "has a birthday" do
+    adam = Person.new(:firstname => "Adam", :lastname => "Bray", :birthdate => Date.new(1981,2,3))
+    expect(adam.birthday).to eq("February 3, 1981")
 
-    end
   end
 end
 
